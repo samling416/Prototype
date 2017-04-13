@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Prototype</string>
+    <string name="group">Group</string>
+    <string name="discover">Discover</string>
+    <string name="profile">Profile</string>
+    <string name="solo">Solo</string>
+</resources>
