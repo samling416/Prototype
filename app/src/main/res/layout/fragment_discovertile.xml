@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:padding="8dp">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/discover_CardViewFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:orientation="vertical"
+        app:cardBackgroundColor="@color/light_polaroid_white"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="2dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="0dp">
+
+            <ImageView
+                android:id="@+id/locationImageFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:background="@color/black"
+                android:transitionName="LocImageTransition"/>
+
+            <TextView
+                android:id="@+id/locationTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:text="TitlePlace Holder"
+                android:textColor="@color/black"
+                android:textSize="24sp"/>
+
+
+            <GridLayout
+                android:id="@+id/activity_icons_GridLayoutFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/tileSave_Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/light_polaroid_white"
+                    android:gravity="center"
+                    android:text="Save"
+                    android:textSize="14sp"
+                    style="@style/Base.Widget.AppCompat.Button.Borderless"/>
+
+                <Button
+                    android:id="@+id/tileExplore_Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/light_polaroid_white"
+                    android:gravity="center"
+                    android:text="Explore"
+                    android:textSize="14sp"
+                    android:layout_marginRight="16dp"
+                    style="@style/Base.Widget.AppCompat.Button.Borderless"/>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+</LinearLayout>

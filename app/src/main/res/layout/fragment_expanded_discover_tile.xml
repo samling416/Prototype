@@ -1,0 +1,65 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context="io.example.peanutbutter.prototype.ExpandedDiscoverTile">
+
+
+    <RelativeLayout
+        android:background="@color/light_polaroid_white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/expanded_Imageview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:maxHeight="300dp"
+            android:src="@color/cardview_dark_background"
+            android:transitionName="LocImageTransition"
+            />
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/contact_view_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            android:minHeight="?attr/actionBarSize"
+            android:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+        </android.support.v7.widget.Toolbar>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/expanded_Imageview"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/primary_Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:textSize="24sp"
+                android:textColor="@color/black"
+                />
+
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/expanded_MapView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </com.google.android.gms.maps.MapView>
+
+
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+</FrameLayout>
