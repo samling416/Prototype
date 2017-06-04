@@ -73,6 +73,7 @@ public class DiscoverActivity extends AppCompatActivity implements DiscoverTileF
 
     private ArrayList<DiscoverTile> Test;
     private ArrayList<ActivityIcon> Icons;
+    private ArrayList<DiscoverTile> filtered;
 
     private ArrayList<Boolean> mShowingBack;
     private DiscoverTileFragment discoverTileFragment;
@@ -362,23 +363,29 @@ public class DiscoverActivity extends AppCompatActivity implements DiscoverTileF
         // Loop through tiles and only filter via activity icons.
         // New arraylist of filtered things.
         ArrayList<DiscoverTile> newTest = new ArrayList<DiscoverTile>();
+        ArrayList<DiscoverTile> source = new ArrayList<>();
+        if (TFmode == useDTF) {
+            source = Test;
+        } else if (TFmode == useFTF) {
+            source = filtered;
+        }
 
         // Check to see if all activities have been selected.
         if (mActivity != R.drawable.ic_all) {
             // Loop through to filter out activities.
-            for (int i = 0; i < Test.size(); i++) {
-                for (int j = 0; j < Test.get(i).noOfActivities(); j++) {
-                    int activity = Test.get(i).getActivities().get(j);
+            for (int i = 0; i < source.size(); i++) {
+                for (int j = 0; j < source.get(i).noOfActivities(); j++) {
+                    int activity = source.get(i).getActivities().get(j);
                     if (activity == mActivity) {
                         //Log.d(TAG, "Yes");
-                        newTest.add(Test.get(i));
+                        newTest.add(source.get(i));
                         break;
                     }
                     //Log.d(TAG, "No");
                 }
             }
         } else { // Show all tiles if 'all' has been selected.
-            newTest = Test;
+            newTest = source;
         }
 
 
@@ -444,7 +451,7 @@ public class DiscoverActivity extends AppCompatActivity implements DiscoverTileF
         Location point = new Location("Point");
 
         // New arraylist of filter things.
-        ArrayList<DiscoverTile> newTest = new ArrayList<DiscoverTile>();
+        filtered = new ArrayList<DiscoverTile>();
 
         // For loop calculate straight line distance between each tile object in database and center.
         for (int i = 0; i < Test.size(); i++) {
@@ -455,7 +462,7 @@ public class DiscoverActivity extends AppCompatActivity implements DiscoverTileF
             //Log.d(TAG, "onMapDialogFragmentInteraction: distance is " + distance);
             if (distance <= rad) {
                 // Test.get(i) is in the radius.  Show selection.
-                newTest.add(Test.get(i));
+                filtered.add(Test.get(i));
             }
         }
 
@@ -465,7 +472,7 @@ public class DiscoverActivity extends AppCompatActivity implements DiscoverTileF
         TFmode = useFTF;
 
         Bundle bundle = new Bundle();
-        bundle.putParcelableArrayList("KEY", newTest);
+        bundle.putParcelableArrayList("KEY", filtered);
 
         filteredTileFragment.setArguments(bundle);
         FragmentManager fragmentManager = getSupportFragmentManager();
