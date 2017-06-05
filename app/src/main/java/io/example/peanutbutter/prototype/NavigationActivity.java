@@ -26,13 +26,13 @@ public class NavigationActivity extends AppCompatActivity {
             }
         });
 
-        ImageView groupImageView = (ImageView)findViewById(R.id.group_ImageView);
+        ImageView groupImageView = (ImageView)findViewById(R.id.plan_ImageView);
         groupImageView.setColorFilter(Color.rgb(123, 123, 123), android.graphics.PorterDuff.Mode.MULTIPLY);
         groupImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Upon clicking GROUP, goes to activity listing groups.
-                Intent i = new Intent(NavigationActivity.this,GroupListActivity.class);
+                //Upon clicking PLAN, goes to planning stage.
+                Intent i = new Intent(NavigationActivity.this,PlanActivity.class);
                 startActivity(i);
             }
         });

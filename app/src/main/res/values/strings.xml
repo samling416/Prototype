@@ -4,6 +4,7 @@
     <string name="discover">Discover</string>
     <string name="profile">Profile</string>
     <string name="solo">Solo</string>
+    <string name="Plan">Plan</string>
     <string name="title_activity_discover_map_fragment">Map</string>
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -11,4 +12,5 @@
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_discover_maps">Map</string>
     <string name="title_activity_discover_map">Map</string>
+    <string name="title_activity_plan">PlanActivity</string>
 </resources>

@@ -99,7 +99,7 @@ public class IconBarFragment extends Fragment {
             mListener = (OnIconBarInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+                    + " must implement OnPlanMapFragmentInteractionListener");
         }
     }
 
