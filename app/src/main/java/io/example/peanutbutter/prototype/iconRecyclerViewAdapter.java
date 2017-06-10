@@ -11,39 +11,37 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Samuel on 1/06/2017.
  */
 
-public class IconRecyclerViewAdapter extends RecyclerView.Adapter<IconRecyclerViewAdapter.ViewHolder> {
+public class iconRecyclerViewAdapter extends RecyclerView.Adapter<iconRecyclerViewAdapter.IconViewHolder> {
 
-    private static final String TAG = "IconRecyclerViewAdapter";
+    private static final String TAG = "iconRecyclerViewAdapter";
 
     private Context mContext;
     private ArrayList<ActivityIcon> mIcons;
     private String mName;
     private int mActivity;
-    private IconBarFragment.OnIconBarInteractionListener mListener;
+    private IconBarFragment.OnIconBarInteractionListener miListener;
 
 
-
-    public IconRecyclerViewAdapter(Context context, ArrayList<ActivityIcon> icons, IconBarFragment.OnIconBarInteractionListener listener) {
-        Log.d(TAG, "IconRecyclerViewAdapter: ");
+    public iconRecyclerViewAdapter(Context context, ArrayList<ActivityIcon> icons, IconBarFragment.OnIconBarInteractionListener listener) {
+        Log.d(TAG, "iconRecyclerViewAdapter: icons");
         this.mContext = context;
         this.mIcons = icons;
-        this.mListener = listener;
+        this.miListener = listener;
     }
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class IconViewHolder extends RecyclerView.ViewHolder {
 
         // Initialize View elements
         public final ImageButton mImageButton;
         public final TextView mTextView;
 
-        public ViewHolder(View view) {
+        public IconViewHolder(View view) {
             super(view);
             mImageButton = (ImageButton) view.findViewById(R.id.activity_icons);
             mTextView = (TextView) view.findViewById(R.id.activityicon_name);
@@ -54,14 +52,15 @@ public class IconRecyclerViewAdapter extends RecyclerView.Adapter<IconRecyclerVi
                     Toast.makeText(mContext, mIcons.get(getAdapterPosition()).getName(), Toast.LENGTH_SHORT).show();
                     mName = mIcons.get(getAdapterPosition()).getName();
                     mActivity = mIcons.get(getAdapterPosition()).getPhoto();
-                    mListener.onIconBarFragmentInteraction(mName, mActivity);
+                    miListener.onIconBarFragmentInteraction(mName, mActivity);
                 }
             });
         }
     }
 
+
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
+    public void onBindViewHolder(IconViewHolder holder, final int position) {
         Log.d(TAG, "onBindViewHolder: " + mIcons.get(position).getName() + " loaded");
 
         // Bind to new data when view is being recycled.
@@ -73,12 +72,12 @@ public class IconRecyclerViewAdapter extends RecyclerView.Adapter<IconRecyclerVi
 
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public IconViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         Log.d(TAG, "OnCreateViewHolder");
 
         final View view = LayoutInflater.from(this.mContext).inflate(R.layout.horz_gridview_item, parent, false);
-        ViewHolder viewHolder = new ViewHolder(view);
+        IconViewHolder viewHolder = new IconViewHolder(view);
 
 
         return viewHolder;
@@ -87,6 +86,7 @@ public class IconRecyclerViewAdapter extends RecyclerView.Adapter<IconRecyclerVi
     @Override
     public int getItemCount() {
         return this.mIcons.size();
+
     }
 
     public String getName() {

@@ -1,10 +1,12 @@
 package io.example.peanutbutter.prototype;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,29 +16,22 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link IconBarFragment.OnIconBarInteractionListener} interface
+ * {@link OnMiniTilesInteractionListener} interface
  * to handle interaction events.
- * Use the {@link IconBarFragment#newInstance} factory method to
+ * Use the {@link MiniTilesFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class IconBarFragment extends Fragment {
-
-    private static final String TAG = "IconBarFragment";
-    private static final int vertical = 0, horizontal = 1;
-    private static final int HORIZONTAL_ITEM_SPACING = 10;
-
-
+public class MiniTilesFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-    private ArrayList<ActivityIcon> mIcons;
-    public iconRecyclerViewAdapter iconAdapter;
+    private ArrayList<DiscoverTile> mTiles;
+    private miniRecyclerViewAdapter miniTilesAdapter;
+    private OnMiniTilesInteractionListener mListener;
 
-    private OnIconBarInteractionListener mListener;
-
-    public IconBarFragment() {
+    public MiniTilesFragment() {
         // Required empty public constructor
     }
 
@@ -46,11 +41,11 @@ public class IconBarFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment IconBarFragment.
+     * @return A new instance of fragment MiniTilesFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static IconBarFragment newInstance(String param1, String param2) {
-        IconBarFragment fragment = new IconBarFragment();
+    public static MiniTilesFragment newInstance(String param1, String param2) {
+        MiniTilesFragment fragment = new MiniTilesFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
@@ -65,9 +60,9 @@ public class IconBarFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_horizontalgridview, container, false);
+        View view = inflater.inflate(R.layout.fragment_verticalminitiles, container, false);
         Bundle bundle = getArguments();
-        mIcons = bundle.getParcelableArrayList("KEY");
+        mTiles = bundle.getParcelableArrayList("KEY");
 
 
         // Set the adapter
@@ -79,10 +74,13 @@ public class IconBarFragment extends Fragment {
             //add ItemDecoration
             //recyclerView.addItemDecoration(new DividerItemDecoration(HORIZONTAL_ITEM_SPACING, horizontal));
 
-            iconAdapter = new iconRecyclerViewAdapter(context, mIcons, mListener);
-            LinearLayoutManager layoutManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
+            miniTilesAdapter = new miniRecyclerViewAdapter(context, mTiles, mListener);
+            ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback(miniTilesAdapter);
+            ItemTouchHelper touchHelper = new ItemTouchHelper(callback);
+            touchHelper.attachToRecyclerView(recyclerView);
+            LinearLayoutManager layoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
             recyclerView.setLayoutManager(layoutManager);
-            recyclerView.setAdapter(iconAdapter);
+            recyclerView.setAdapter(miniTilesAdapter);
         }
 
 
@@ -92,11 +90,11 @@ public class IconBarFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnIconBarInteractionListener) {
-            mListener = (OnIconBarInteractionListener) context;
+        if (context instanceof OnMiniTilesInteractionListener) {
+            mListener = (OnMiniTilesInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnPlanMapFragmentInteractionListener");
+                    + " must implement OnMiniTilesInteractionListener");
         }
     }
 
@@ -116,8 +114,8 @@ public class IconBarFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnIconBarInteractionListener {
+    public interface OnMiniTilesInteractionListener {
         // TODO: Update argument type and name
-        void onIconBarFragmentInteraction(String mName, int mActivity);
+        void onMiniTilesFragmentInteraction(DiscoverTile tile);
     }
 }
