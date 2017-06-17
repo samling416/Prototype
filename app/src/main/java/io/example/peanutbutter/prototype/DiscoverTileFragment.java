@@ -34,7 +34,7 @@ public class DiscoverTileFragment extends Fragment {
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
-    private static final int VERTICAL_ITEM_SPACE = 250;
+    private static final int VERTICAL_ITEM_SPACE = 0;
     // TODO: Customize parameters
     private OnListFragmentInteractionListener mListener;
     private ArrayList<DiscoverTile> Test;

@@ -91,15 +91,13 @@ public class DiscoverActivity extends AppCompatActivity implements DiscoverTileF
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_discover);
+        setContentView(R.layout.activity_discover_r2);
 
 
         // Toolbar
         Toolbar discoverToolbar = (Toolbar) findViewById(R.id.discover_Toolbar);
         setSupportActionBar(discoverToolbar);
 
-        // Toolbar TextView
-        locationChosen = (TextView) findViewById(R.id.toolbar_location_indicator);
 
         // Toolbar Radius Adjust
         adjustRadius = (ImageButton) findViewById(R.id.toolbar_search_radius);
@@ -117,9 +115,9 @@ public class DiscoverActivity extends AppCompatActivity implements DiscoverTileF
             }
         });
 
-        // Toolbar icon Map
-        final ImageButton mapIcon = (ImageButton) findViewById(R.id.map_toolbar_icon);
-        mapIcon.setOnClickListener(new View.OnClickListener() {
+        // Toolbar TextView
+        locationChosen = (TextView) findViewById(R.id.toolbar_location_indicator);
+        locationChosen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Construct Intent to launch place picker activity.

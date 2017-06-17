@@ -53,7 +53,6 @@ public class DTRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public final CardView cv;
         public final ImageView locPhoto;
         public final GridLayout activityIconsGridLayout;
         public final View mView;
@@ -64,7 +63,6 @@ public class DTRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         public ViewHolder(View itemView) {
             super(itemView);
             mView = itemView;
-            cv = (CardView) itemView.findViewById(R.id.discover_CardViewFragment);
             locPhoto = (ImageView) itemView.findViewById(R.id.locationImageFragment);
             activityIconsGridLayout = (GridLayout) itemView.findViewById(R.id.activity_icons_GridLayoutFragment);
             exploreButton = (Button) itemView.findViewById(R.id.tileExplore_Button);

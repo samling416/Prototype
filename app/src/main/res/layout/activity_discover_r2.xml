@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coordinatorlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:background="@color/colorPrimary"
+            android:minHeight="?attr/actionBarSize">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/discoverbackground"/>
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/discover_Toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@color/white"
+                    app:contentInsetStart="0dp">
+
+                    <LinearLayout
+                        android:id="@+id/map_call"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <ImageView
+                            android:id="@+id/map_toolbar_icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:paddingStart="@dimen/icon_side_padding"
+                            android:src="@drawable/ic_location_pin"/>
+
+                        <TextView
+                            android:id="@+id/toolbar_location_indicator"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@color/white"
+                            android:hint="Search a Location..."
+                            android:maxLines="1"
+                            android:paddingBottom="@dimen/input_text_bottom_padding"
+                            android:paddingLeft="@dimen/icon_side_padding"
+                            android:paddingTop="@dimen/input_text_top_padding"
+                            android:textSize="20sp"/>
+
+                        <ImageButton
+                            android:id="@+id/toolbar_search_radius"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="16dp"
+                            android:background="@color/white"
+                            android:contentDescription="Radius"
+                            android:src="@drawable/ic_adjust_radius"
+                            />
+
+                    </LinearLayout>
+                </android.support.v7.widget.Toolbar>
+            </RelativeLayout>
+
+
+        </android.support.design.widget.AppBarLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:baselineAligned="false"
+            android:orientation="vertical"
+            android:weightSum="100">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="87"
+                android:background="@color/dark_polaroid_white"
+                android:clipToPadding="false">
+
+                <FrameLayout
+                    android:id="@+id/discover_tilefragment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/dark_polaroid_white">
+                </FrameLayout>
+
+            </RelativeLayout>
+
+
+            <FrameLayout
+                android:id="@+id/icon_barfragment"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="13"
+                android:background="@color/white">
+            </FrameLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>

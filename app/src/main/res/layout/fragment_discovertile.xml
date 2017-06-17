@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/discover_CardViewFragment"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:padding="8dp">
+    android:clipToPadding="false"
+    android:orientation="vertical"
+    app:cardBackgroundColor="@color/light_polaroid_white"
+    app:cardElevation="2dp"
+    app:cardPreventCornerOverlap="false"
+    app:cardUseCompatPadding="true">
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/discover_CardViewFragment"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="4dp"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        app:cardBackgroundColor="@color/light_polaroid_white"
-        app:cardCornerRadius="5dp"
-        app:cardElevation="2dp">
+        android:paddingLeft="0dp"
+        android:weightSum="100">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:paddingLeft="0dp">
+            android:layout_height="0dp"
+            android:layout_weight="67">
 
             <ImageView
                 android:id="@+id/locationImageFragment"
@@ -35,55 +36,64 @@
                 android:id="@+id/locationTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
                 android:layout_marginLeft="16dp"
-                android:paddingTop="8dp"
                 android:paddingBottom="8dp"
+                android:paddingTop="8dp"
                 android:text="TitlePlace Holder"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="24sp"/>
 
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="33">
 
             <GridLayout
                 android:id="@+id/activity_icons_GridLayoutFragment"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
                 />
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="end"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/tileSave_Button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@color/light_polaroid_white"
-                    android:gravity="center"
-                    android:text="Save"
-                    android:textSize="14sp"
-                    style="@style/Base.Widget.AppCompat.Button.Borderless"/>
+                android:layout_below="@id/activity_icons_GridLayoutFragment">
 
                 <Button
                     android:id="@+id/tileExplore_Button"
+                    style="@style/Base.Widget.AppCompat.Button.Borderless"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginRight="16dp"
                     android:background="@color/light_polaroid_white"
                     android:gravity="center"
                     android:text="Explore"
-                    android:textSize="14sp"
-                    android:layout_marginRight="16dp"
-                    style="@style/Base.Widget.AppCompat.Button.Borderless"/>
+                    android:textSize="14sp"/>
+
+                <Button
+                    android:id="@+id/tileSave_Button"
+                    style="@style/Base.Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@id/tileExplore_Button"
+                    android:background="@color/light_polaroid_white"
+                    android:text="Save"
+                    android:textSize="14sp"/>
 
 
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </android.support.v7.widget.CardView>
+            </RelativeLayout>
+        </RelativeLayout>
 
 
-</LinearLayout>
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>
+
+
